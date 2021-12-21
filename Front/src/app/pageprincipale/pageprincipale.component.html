@@ -1,0 +1,354 @@
+<!-- Navigation-->
+<nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
+  <div class="container px-4 px-lg-4">
+    <a class="navbar-brand mr-auto " href="#"><img src="./././assets/images/logo.png"  height="50" width="90"></a>
+    <div class="collapse navbar-collapse col-6" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" routerLink="/home"><span class="fa fa-home fa-lg"></span>Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="\principale">Choisir un web service</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="\panne">Déclarer une pannes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse offset-1 col-5" >
+      <ul class="navbar-nav ml-auto me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item "><a class="nav-link pl-0" href="\principale"><span class="fa fa-user-circle fa-lg"></span>Mon compte</a></li>
+        <li class="nav-item "><a class="nav-link pl-0" data-toggle="modal" (click)="open()"><span class="fa fa-sign-out fa-lg"></span>Déconnexion</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Header-->
+<header class="jumbotron py-5">
+  <a id="filtrer" role="button" class="filter btn btn-secondary" (click)="scrollFilter(target1)"><i class="fa fa-sliders"></i></a>
+  <div class="container px-4 px-lg-5 my-5" >
+    <div class="text-center text-dark">
+      <h1 class="display-6 fw-bolder">What are you looking for in WSgenerator?</h1>
+    </div>
+    <form class="input-group" #loginform="ngForm" >
+        <div class="form-outline py-3 offset-3 col-6">
+          <input type="search" id="form01" class="form-control" [(ngModel)]="matricule" [ngModelOptions]="{standalone: true}" placeholder="Entrer le matricule du web service"/>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="loginform.form.invalid" (click)="scrollMatricule(target2)">
+          <i class="fa fa-search"></i>
+        </button>
+    </form>
+    <small class="text-danger err">{{msg}}</small>
+    </div>
+</header>
+
+<!-- Section-->
+<section class="py-0">
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="row">
+      <div class="text-start text-dark">
+        <h2 class="display-9 fw-bolder">les web service fréquement utilisés</h2>
+      </div>
+    </div>
+    <div class="row py-3 gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <div class="col mb-5">
+        <div class="card h-100">
+          <!-- Product details-->
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder align-self-center">Trouver une cotisations faite avec un taux précis</h5>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="copier1()" >Matricule = 123</button></div>
+          </div>
+        </div>
+        <small class="text-info">{{msg21}} </small>
+      </div>
+      <div class="col mb-5">
+        <div class="card h-100">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder align-self-center">Trouver le taux d'une cotisation</h5>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="copier2()" >Matricule = 147</button></div>
+          </div>
+        </div>
+        <small class="text-info">{{msg22}} </small>
+      </div>
+      <div class="col mb-5">
+        <div class="card h-100">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder align-self-center">Vérifier l'existance d'une cotiation faite avec un taux précis</h5>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="copier3()" >Matricule = 256</button></div>
+          </div>
+        </div>
+        <small class="text-info">{{msg23}} </small>
+      </div>
+      <div class="col mb-5">
+        <div class="card h-100">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder align-self-center">Trouver les recompense faite avec un type précis</h5>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="copier4()" >Matricule = 763</button></div>
+          </div>
+        </div>
+        <small class="text-info">{{msg24}}</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter-->
+<div #target1>
+  <section >
+    <div class="container px-lg-5" >
+      <div class="row">
+        <div class="text-start text-dark">
+          <h2 class="display-9 fw-bolder">Fitrer les web services</h2>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-4 mb-3 offset-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <label class="offset-1"><h5 class="fw-bolder ">Catégories</h5> </label>
+              <select  [(ngModel)]="taux" [ngModelOptions]="{standalone: true}">
+                <option value="cotisation" selected>Cotisation</option>
+                <option value="rembourcement">Remboursement</option>
+              </select>
+              <div class="offset-10">
+                <button type="submit" class="btn btn-primary" (click)="scrollFilter2(target4)">OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Filter Cotisation-->
+<section class="py-0" #target4>
+  <div class="container px-4 px-lg-5 mt-5" *ngIf="show01">
+    <div class="row">
+      <div class="text-start text-dark">
+        <h2 class="display-9 fw-bolder">Les web service filtré : Cotisation</h2>
+      </div>
+    </div>
+    <div class="row py-3 gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <div class="col mb-5">
+        <div class="card h-100">
+          <!-- Product details-->
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder align-self-center">Trouver une cotisations faite avec un taux précis</h5>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="copier1()" >Matricule = 123</button></div>
+          </div>
+        </div>
+        <small class="text-info">{{msg21}} </small>
+      </div>
+      <div class="col mb-5">
+        <div class="card h-100">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder align-self-center">Trouver le taux d'une cotisation</h5>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="copier2()" >Matricule = 147</button></div>
+          </div>
+        </div>
+        <small class="text-info">{{msg22}} </small>
+      </div>
+      <div class="col mb-5">
+        <div class="card h-100">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder align-self-center">Vérifier l'existance d'une cotiation faite avec un taux précis</h5>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="copier3()" >Matricule = 256</button></div>
+          </div>
+        </div>
+        <small class="text-info">{{msg23}} </small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Recomponse-->
+<section class="py-0" #target4>
+  <div class="container px-4 px-lg-5 mt-5" *ngIf="show02">
+    <div class="row">
+      <div class="text-start text-dark">
+        <h2 class="display-9 fw-bolder">Les web service filtré : Recompense</h2>
+      </div>
+    </div>
+    <div class="row py-3 gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <div class="col mb-5">
+        <div class="card h-100">
+          <div class="card-body p-4 text-center">
+            <h5 class="fw-bolder align-self-center">Trouver les recompense faite avec un type précis</h5>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><button class="btn btn-outline-dark mt-auto" (click)="copier4()" >Matricule = 763</button></div>
+          </div>
+        </div>
+        <small class="text-info">{{msg24}}</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Parametres-->
+<section>
+  <div #target2 >
+    <div *ngIf="show" class="container px-lg-5" >
+      <div class="row">
+        <div >
+          <h2 class="display-9 fw-bolder">La liste des paramètres</h2>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-6 mb-3 offset-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="text-center">
+                <h6 class="fw-bolder ">La description du web service dont le matricule = {{matricule}}</h6>
+              </div>
+              <form  #parametresform="ngForm" (ngSubmit)="ChoisirWS()" >
+                <div [ngSwitch]="matricule">
+                  <div class="form-group py-3 offset-1 col-9" style="display: flex" *ngSwitchCase="123">
+                      <label class="fw-bold">Taux</label>
+                      <input type="search" class="form-control offset-1" placeholder="Taux" [(ngModel)]="taux" [ngModelOptions]="{standalone: true}"/>
+                  </div>
+                  <div class="form-group py-3 offset-1 col-9" style="display: flex" *ngSwitchCase="147">
+                    <label class="fw-bold">ID</label>
+                    <input type="number" class="form-control offset-1" placeholder="Entrer la valeur d'ID" [(ngModel)]="id" [ngModelOptions]="{standalone: true}"/>
+                  </div>
+                  <div class="form-group py-3 offset-1 col-9" style="display: flex" *ngSwitchCase="256">
+                    <label class="fw-bold">Taux</label>
+                    <input type="search" class="form-control offset-1" placeholder="Taux" [(ngModel)]="taux" [ngModelOptions]="{standalone: true}"/>
+                  </div>
+                  <div class="form-group py-3 offset-1 col-9" style="display: flex" *ngSwitchCase="763">
+                    <label class="">Type de remboursement : </label>
+                    <select  [(ngModel)]="taux" [ngModelOptions]="{standalone: true}">
+                      <option value="infine" selected>In fine</option>
+                      <option value="par anticipation">Par anticipation</option>
+                    </select>
+                  </div>
+                  <div class="form-group offset-10">
+                    <button type="submit" class="btn btn-primary" [disabled]="parametresform.form.invalid " (click)="scrollDonnees(target3)">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <small class="text-danger">{{msg}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Données -->
+<div #target3 >
+  <div class="container px-lg-5" *ngIf="show2">
+    <div class="row">
+      <div >
+        <h2 class="display-9 fw-bolder">La table des données</h2>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-6 mb-3 offset-3" [ngSwitch]="matricule">
+        <div *ngSwitchCase="123">
+          <table *ngIf="findCotisationbyTaux" class="table table-striped table-dark">
+            <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">TAUX</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let f of findCotisationbyTaux">
+              <td>{{f.id}}</td>
+              <td>{{f.taux}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngSwitchCase="147">
+          <table *ngIf="findCotisationbyTaux" class="table table-striped table-dark">
+            <thead>
+            <tr>
+              <th >Le taux de la cotisation dont le ID = {{id}}</th>
+              <th scope="col">{{donne}} </th>
+            </tr>
+            </thead>
+          </table>
+        </div>
+        <div *ngSwitchCase="256">
+          <table *ngIf="findCotisationbyTaux" class="table table-striped table-dark">
+            <thead>
+            <tr>
+              <th scope="col">Exist-il une cotisation avec un taux = {{taux}}</th>
+              <th scope="col">{{exist}} </th>
+            </tr>
+            </thead>
+          </table>
+        </div>
+        <div *ngSwitchCase="763">
+          <table *ngIf="findRecomponsebyTypere" class="table table-striped table-dark">
+            <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">TYPE REMBOURSEMENT</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let f of findRecomponsebyTypere">
+              <td>{{f.id}}</td>
+              <td>{{f.typere}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+<!--        <div *ngSwitchCase="796">-->
+<!--          <table *ngIf="findCotisationbyTaux" class="table table-striped table-dark">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--              <th scope="col">ID</th>-->
+<!--              <th scope="col">TAUX</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr *ngFor="let f of findCotisationbyTaux">-->
+<!--              <td>{{f.id}}</td>-->
+<!--              <td>{{f.taux}}</td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--          </table>-->
+<!--        </div>-->
+<!--        <div *ngSwitchCase="963">-->
+<!--          <table *ngIf="findRecomponsebyTypere" class="table table-striped table-dark">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--              <th scope="col">ID</th>-->
+<!--              <th scope="col">TYPE REMBOURSEMENT</th>-->
+<!--              <th scope="col">ID_COTISATION</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr *ngFor="let f of findRecomponsebyTypere">-->
+<!--              <td>{{f.id}}</td>-->
+<!--              <td>{{f.typere}}</td>-->
+<!--              <td>{{f.idcotisation}}</td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--          </table>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+</div>

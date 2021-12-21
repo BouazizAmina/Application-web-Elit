@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title1">Registration</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form #registerform="ngForm" (ngSubmit)="registerUser()">
+      <small class="text-danger">{{msg}}</small>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email"
+               [(ngModel)]="recepteur.email" required #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+               [class.is-invalid]="email.invalid && email.touched">
+        <div *ngIf="email.errors && (email.invalid && email.touched)">
+          <small class="text-danger" *ngIf="email.errors.required">Email is required field</small>
+          <small class="text-danger" *ngIf="email.errors.pattern">Enter a valid email</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Enter username"
+               [(ngModel)]="recepteur.username" required #username="ngModel"
+               [class.is-invalid]="username.invalid && username.touched">
+        <div *ngIf="username.errors && (username.invalid && username.touched)">
+          <small class="text-danger" *ngIf="username.errors.required">Username is required field</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password"
+               [(ngModel)]="recepteur.password" required #password="ngModel"
+               [class.is-invalid]="password.invalid && password.touched">
+        <div *ngIf="password.errors && (password.invalid && password.touched)">
+          <small class="text-danger" *ngIf="password.errors.required">Password is required field</small>
+        </div>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="check">
+        <label class="form-check-label" for="check">Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="registerform.form.invalid" >Register</button>
+    </form>
+</div>
+<div class="modal-footer">
+  <small class="float-end btextual" (click)="open()" (click)="activeModal.close('Close click')">Vous avez déjà un compte? Se connecter ici</small>
+</div>
+

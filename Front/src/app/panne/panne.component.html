@@ -1,0 +1,40 @@
+<!-- Navigation-->
+<nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
+  <div class="container px-4 px-lg-4">
+    <a class="navbar-brand mr-auto " href="#"><img src="./././assets/images/logo.png"  height="50" width="90"></a>
+    <div class="collapse navbar-collapse col-6" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" routerLink="/home"><span class="fa fa-home fa-lg"></span>Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="\principale">Choisir un web service</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="\panne">Déclarer une pannes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse offset-1 col-5" >
+      <ul class="navbar-nav ml-auto me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item "><a class="nav-link pl-0" href="\panne"><span class="fa fa-user-circle fa-lg"></span>Mon compte</a></li>
+        <li class="nav-item "><a class="nav-link pl-0" data-toggle="modal" (click)="open()"><span class="fa fa-sign-out fa-lg"></span>Déconnexion</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container px-4  my-5" >
+    <div class="text-center text-dark">
+      <h1 class="display-6 fw-bolder">Quelle est la panne que vous avez remarqué?</h1>
+    </div>
+    <div>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" [(ngModel)]="panne1.panne" [ngModelOptions]="{standalone: true}" placeholder="Entrer la description de la panne"></textarea>
+      <button type="submit" class="btn btn-primary float-end" (click)="declarerPanne()">Envoyer</button>
+      <small class="text-info">{{msg}}</small>
+    </div>
+</div>
+
+
+</div>
